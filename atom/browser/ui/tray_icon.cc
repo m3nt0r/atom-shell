@@ -12,7 +12,7 @@ TrayIcon::TrayIcon() {
 TrayIcon::~TrayIcon() {
 }
 
-void TrayIcon::SetPressedImage(const gfx::ImageSkia& image) {
+void TrayIcon::SetPressedImage(const gfx::ImageSkia& image, bool isTemplate) {
 }
 
 void TrayIcon::SetTitle(const std::string& title) {

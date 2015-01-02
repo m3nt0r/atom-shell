@@ -48,8 +48,8 @@ class Tray : public mate::EventEmitter,
   void OnBalloonClosed() override;
 
   void Destroy();
-  void SetImage(mate::Arguments* args, const gfx::ImageSkia& image);
-  void SetPressedImage(mate::Arguments* args, const gfx::ImageSkia& image);
+  void SetImage(mate::Arguments* args, const gfx::ImageSkia& image, bool isTemplate);
+  void SetPressedImage(mate::Arguments* args, const gfx::ImageSkia& image, bool isTemplate);
   void SetToolTip(mate::Arguments* args, const std::string& tool_tip);
   void SetTitle(mate::Arguments* args, const std::string& title);
   void SetHighlightMode(mate::Arguments* args, bool highlight);

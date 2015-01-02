@@ -53,19 +53,25 @@ TrayIconCocoa::~TrayIconCocoa() {
   [[NSStatusBar systemStatusBar] removeStatusItem:item_];
 }
 
-void TrayIconCocoa::SetImage(const gfx::ImageSkia& image) {
+void TrayIconCocoa::SetImage(const gfx::ImageSkia& image, bool isTemplate = true) {
   if (!image.isNull()) {
     gfx::Image neutral(image);
-    if (!neutral.IsEmpty())
-      [item_ setImage:neutral.ToNSImage()];
+    if (!neutral.IsEmpty()) {
+      NSImage *nImage = neutral.ToNSImage();
+      [nImage setTemplate:isTemplate];
+      [item_ setImage:nImage];
+    }
   }
 }
 
-void TrayIconCocoa::SetPressedImage(const gfx::ImageSkia& image) {
+void TrayIconCocoa::SetPressedImage(const gfx::ImageSkia& image, bool isTemplate = true) {
   if (!image.isNull()) {
     gfx::Image neutral(image);
-    if (!neutral.IsEmpty())
-      [item_ setAlternateImage:neutral.ToNSImage()];
+    if (!neutral.IsEmpty()) {
+      NSImage *nImage = neutral.ToNSImage();
+      [nImage setTemplate:isTemplate];
+      [item_ setAlternateImage:nImage];
+    }
   }
 }
 
@@ -80,6 +86,7 @@ void TrayIconCocoa::SetTitle(const std::string& title) {
 void TrayIconCocoa::SetHighlightMode(bool highlight) {
   [item_ setHighlightMode:highlight];
 }
+
 
 void TrayIconCocoa::SetContextMenu(ui::SimpleMenuModel* menu_model) {
   menu_.reset([[AtomMenuController alloc] initWithModel:menu_model]);

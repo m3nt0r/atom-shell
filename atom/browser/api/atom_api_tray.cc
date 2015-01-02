@@ -21,7 +21,7 @@ namespace api {
 
 Tray::Tray(const gfx::ImageSkia& image)
     : tray_icon_(TrayIcon::Create()) {
-  tray_icon_->SetImage(image);
+  tray_icon_->SetImage(image, true);
   tray_icon_->AddObserver(this);
 }
 
@@ -57,16 +57,16 @@ void Tray::Destroy() {
   tray_icon_.reset();
 }
 
-void Tray::SetImage(mate::Arguments* args, const gfx::ImageSkia& image) {
+void Tray::SetImage(mate::Arguments* args, const gfx::ImageSkia& image, bool isTemplate = true) {
   if (!CheckTrayLife(args))
     return;
-  tray_icon_->SetImage(image);
+  tray_icon_->SetImage(image, isTemplate);
 }
 
-void Tray::SetPressedImage(mate::Arguments* args, const gfx::ImageSkia& image) {
+void Tray::SetPressedImage(mate::Arguments* args, const gfx::ImageSkia& image, bool isTemplate = true) {
   if (!CheckTrayLife(args))
     return;
-  tray_icon_->SetPressedImage(image);
+  tray_icon_->SetPressedImage(image, isTemplate);
 }
 
 void Tray::SetToolTip(mate::Arguments* args, const std::string& tool_tip) {
