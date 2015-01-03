@@ -53,7 +53,7 @@ TrayIconCocoa::~TrayIconCocoa() {
   [[NSStatusBar systemStatusBar] removeStatusItem:item_];
 }
 
-void TrayIconCocoa::SetImage(const gfx::ImageSkia& image, bool isTemplate = true) {
+void TrayIconCocoa::SetImage(const gfx::ImageSkia& image, bool isTemplate) {
   if (!image.isNull()) {
     gfx::Image neutral(image);
     if (!neutral.IsEmpty()) {
@@ -64,7 +64,7 @@ void TrayIconCocoa::SetImage(const gfx::ImageSkia& image, bool isTemplate = true
   }
 }
 
-void TrayIconCocoa::SetPressedImage(const gfx::ImageSkia& image, bool isTemplate = true) {
+void TrayIconCocoa::SetPressedImage(const gfx::ImageSkia& image, bool isTemplate) {
   if (!image.isNull()) {
     gfx::Image neutral(image);
     if (!neutral.IsEmpty()) {
